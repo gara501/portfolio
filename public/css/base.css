@@ -1,0 +1,128 @@
+:root {
+  --color-black: #000;
+  --color-green: #49C100;
+  --color-terminal-green: #6AC54B;
+  --color-terminal-yellow: #ECC14B;
+  --color-terminal-red: #D45B55;
+  --color-white: #fff;
+  --color-light-gray: #ddd;
+  --color-light-black: #222;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+  background-image: url('https://images.pexels.com/photos/247791/pexels-photo-247791.png?auto=compress&cs=tinysrgb&h=750&w=1260');
+  background-size: cover;
+  height: 100vh;
+  padding: 10px;
+}
+
+/* Animations */
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Themes */
+.theme-console {
+  background: rgb(30, 30, 40);
+  background-repeat: repeat;
+  background-size: 20px 10px;
+  color: var(--color-green);
+}
+
+.theme-console .title {
+  color: rgba(var(--color-white), .9);
+  font-size: 2rem;
+  text-shadow: 0 .1em 0 var(--color-black); 
+}
+
+.terminal {
+  display: flex;
+  flex-flow: column nowrap;
+  font-size: 1rem;
+  height: 80%;
+  margin: 30px auto 0;
+  width: 80%;
+}
+
+.terminal-header {
+  border: 1px solid var(--color-light-gray);
+  border-radius: 10px 10px 0 0;
+  background: var(--color-light-gray);
+  color: var(--color-black);
+  padding: 10px;
+}
+
+.terminal-body {
+  background: var(--color-light-black);
+  color: var(--color-green);
+  padding: 40px;
+}
+
+.terminal .active-line:after {
+  content: "|";
+  margin-left: 10px;
+  animation: blink 1s 1.5s infinite;
+}
+
+.terminal-buttons {
+  display: flex;
+  flex-flow: row;
+}
+
+.terminal-button {
+  border-radius: 50%;
+  height: 20px;
+  margin-right: 10px;
+  width: 20px;
+}
+
+.terminal-button--yellow {
+  background: var(--color-terminal-yellow);
+}
+
+.terminal-button--green {
+  background: var(--color-terminal-green);
+}
+
+.terminal-button--red {
+  background: var(--color-terminal-red);
+}
+
+.terminal-text--block {
+  display: flex;
+  flex-flow: column;
+}
+
+.terminal-input--text {
+  background: transparent;
+  border: none;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  color: var(--color-green);
+  padding: 10px;
+}
+
+.terminal-cursor--input::before {
+  content: ">";
+}

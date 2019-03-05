@@ -2,13 +2,25 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "Andres Ramirez Dev",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "e2e": "repo-tools test deploy",
+    "test": "repo-tools test app",
+    "cover": "nyc --cache npm test; nyc report --reporter=html"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gara501/portfolio.git"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "ejs": "^1.0.0"
+  },
+  "devDependencies": {
+    "@google-cloud/nodejs-repo-tools": "^3.0.0",
+    "ava": "^1.2.1",
+    "supertest": "^3.3.0"
   },
   "keywords": [
     "portfolio"

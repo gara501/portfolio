@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Andres Ramirez DEV</title>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Coda+Caption:800" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/base.css" />
+</head>
+<body>
+  <nav>
+      <header>
+      </header>
+  </nav>
+  <aside></aside>
+  <main>
+    <div class="terminal" id="terminal-app">
+      <div class="terminal-header">
+        <div class="terminal-buttons">
+          <button class="terminal-button terminal-button--red"></button>
+          <button class="terminal-button terminal-button--yello"></button>
+          <button class="terminal-button terminal-button--green"></button>
+        </div>
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-text">
+          <div class="terminal-text--block">
+            <p>Type help to see commands</p>
+            <div class="terminal-cursor--input">
+              <input type="text" class="terminal-input--text" name="terminal-input" placeholder="|">
+            </div>
+            <div class="terminal-info" v-if="line1">
+              <p>Name: Andres Ramirez</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer></footer>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
