@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Andres Ramirez DEV</title>
+  <title>Andres Ramirez - Software Developer</title>
+  <link rel="shortcut icon" type="image/png" href="images/favicon.ico"/>
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Coda+Caption:800" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/base.css" />
 </head>
@@ -15,25 +16,60 @@
   </nav>
   <aside></aside>
   <main>
+    <div class="ghost">
+      <h1>Follow the white rabbit!</h1>
+    </div>    
     <div class="terminal" id="terminal-app">
       <div class="terminal-header">
         <div class="terminal-buttons">
-          <button class="terminal-button terminal-button--red"></button>
-          <button class="terminal-button terminal-button--yello"></button>
-          <button class="terminal-button terminal-button--green"></button>
+          <button class="terminal-button terminal-button--red"  v-on:click="close"></button>
+          <button class="terminal-button terminal-button--yellow"  v-on:click="ghost"></button>
+          <button class="terminal-button terminal-button--green" v-on:click="expand"></button>
         </div>
       </div>
       <div class="terminal-body">
+        <div class="bye">
+         <p>Good bye, this page will be destroyed in {{ counter }}</p>
+        </div>
         <div class="terminal-text">
           <div class="terminal-text--block">
             <p>Type help to see commands</p>
             <div class="terminal-cursor--input">
-              <input type="text" class="terminal-input--text" name="terminal-input" placeholder="|">
+              <input type="text" class="terminal-input--text" name="terminal-input" placeholder="_" v-on:keyup="validateConsole">
             </div>
-            <div class="terminal-info" v-if="line1">
-              <p>Name: Andres Ramirez</p>
+            <div class="terminal-data" v-bind:class="[show]">
+              <p>Name: Gonzalo Andres Ramirez</p>
+              <p>Career: Systems Engineer</p>
+              <p>Field: Fullstack Developer</p>
+              <p>Experience: > 10 years working in projects with big companies</p>
+            </div>
+            <div class="terminal-data-skills" v-bind:class="[showskills]">
+              <h3>Skills</h3>
+              <div class="terminal-skills--block">
+                <h4>Front End</h4>
+                <p>Html, Css, Sass, Less, GraphQL</p>
+                <p>Angular 1, 2, React, Vue, Web Components (Polymer, Lit-element)</p>
+                <p>Webpack, Babel, Gulp</p>
+              </div>
+              <div class="terminal-skills--block">
+                <h4>Backend</h4>
+                <p>Dot Net, Python, PHP, NodeJS</p>
+              </div>
+              <div class="terminal-skills--block">
+                <h4>Databases</h4>
+                <p>MySql, SQL Server, MongoDB, Postgres, Firebase</p>
+              </div>
+            </div>
+            <div class="terminal-info" v-if="info">
+              <p>Who am I?: whois</p>
+              <p>What I know?: skills</p>
+              <p>What I did?: projects</p>
+              <p>Clear console: clear</p>
             </div>
           </div>
+        </div>
+        <div class="terminal-error" v-if="error">
+          <p>Error, invalid command!</p>
         </div>
       </div>
     </div>
