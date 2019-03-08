@@ -12,6 +12,19 @@ const app = new Vue({
     welcome: true,
     showskills: false,
     showprojects: false,
+    characters:'',
+    devdata:{
+      name: '',
+      name_in: 'Name: Gonzalo Andres Ramirez',
+      career:'',
+      career_in: 'Career: Systems Engineer',
+      field:'',
+      field_in: 'Field: Fullstack Developer',
+      experience:'',
+      experience_in: 'Experience: > 10 years working in projects with big companies like Google, Microsoft, T-Mobile, Choice Hotels, Etc.',
+      interest: '',
+      interest_in: 'Interests: Javascript, Python, CSS animations, videogames development, IA, AR.'
+    },
     error: false,
     counter: 5,
     commands: [
@@ -24,18 +37,17 @@ const app = new Vue({
     ]
   },
   methods: {
-    encrypt: () => {
-      let words = document.querySelectorAll('p');
-      let dict = [];
-
-      words.forEach((key, item) => {
-        let encryptedWord = CryptoJS.AES.encrypt(item.textContent, "neoistheone");
-        dict.push({id:key, value:item, encrypted: encryptedWord.toString(CryptoJS.enc.Utf8)})
-      })
-      console.log(dict);
-    },
-    decrypt: () => {
-
+    chars: function(stringValue, param) {
+      let stringWord = stringValue;
+      let that = this;
+      let counter = 0;    
+      let interval = setInterval(function() {
+        that.devdata[param] = that.devdata[param] + stringWord[counter];
+        counter ++;
+        if (counter === stringWord.length) {
+          clearInterval(interval);
+        }
+      }, 50)
     },
     expand: function(e) {
       const terminal = document.querySelector('.terminal');
@@ -74,12 +86,11 @@ const app = new Vue({
               break;
             case 'root':
               this.show = true;
-              break;
-            case 'encrypt':
-              this.encrypt();
-              break;
-            case 'decript':
-              this.decript();
+              this.chars(this.devdata.name_in, 'name');
+              this.chars(this.devdata.career_in, 'career');
+              this.chars(this.devdata.field_in, 'field');
+              this.chars(this.devdata.experience_in, 'experience');
+              this.chars(this.devdata.interest_in, 'interest');
               break;
             case 'projects':
               this.showprojects = true;

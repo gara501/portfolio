@@ -57,11 +57,11 @@
                   <div class="terminal-data" v-if="show">
                     <h3>Who am I?</h3>
                     <div class="terminal-skills--block">
-                    <p>Name: Gonzalo Andres Ramirez</p>
-                    <p>Career: Systems Engineer</p>
-                    <p>Field: Fullstack Developer</p>
-                    <p>Experience: > 10 years working in projects with big companies like Google, Microsoft, T-Mobile, Choice Hotels, Etc.</p>
-                    <p>Interests: Javascript, Python, CSS animations, videogames development, IA, AR.</p>
+                    <p>{{ devdata.name }}</p>
+                    <p>{{ devdata.career }}</p>
+                    <p>{{ devdata.field }}</p>
+                    <p>{{ devdata.experience }}</p>
+                    <p>{{ devdata.interest }}</p>
                   </div>
                   </div>
                   <div class="terminal-data-skills" v-if="showskills">
