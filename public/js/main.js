@@ -1,9 +1,17 @@
+Vue.directive('focus', {
+  inserted: function (el) {
+      el.focus()
+  }
+})
+
 const app = new Vue({
   el: '#terminal-app',
   data: {
     info: false,
-    show: '',
-    showskills: '',
+    show: false,
+    welcome: true,
+    showskills: false,
+    showprojects: false,
     error: false,
     counter: 5,
     commands: [
@@ -11,10 +19,24 @@ const app = new Vue({
       'whois',
       'projects',
       'skills',
+      'encrypt',
       'clear'
     ]
   },
   methods: {
+    encrypt: () => {
+      let words = document.querySelectorAll('p');
+      let dict = [];
+
+      words.forEach((key, item) => {
+        let encryptedWord = CryptoJS.AES.encrypt(item.textContent, "neoistheone");
+        dict.push({id:key, value:item, encrypted: encryptedWord.toString(CryptoJS.enc.Utf8)})
+      })
+      console.log(dict);
+    },
+    decrypt: () => {
+
+    },
     expand: function(e) {
       const terminal = document.querySelector('.terminal');
       if (terminal.classList.contains('expanded')) {
@@ -50,18 +72,27 @@ const app = new Vue({
             case 'help':
               this.info = true; 
               break;
-            case 'whois':
-              this.show = 'show';
+            case 'root':
+              this.show = true;
               break;
-            case 'code':
-              
+            case 'encrypt':
+              this.encrypt();
+              break;
+            case 'decript':
+              this.decript();
+              break;
+            case 'projects':
+              this.showprojects = true;
               break;
             case 'skills':
-              this.showskills = 'show';
+              this.showskills = true;
               break;
             case 'clear':
               this.info = false;
               this.error = false;
+              this.showprojects = '';
+              this.showskills = '';
+              this.welcome = false;
               this.show = '';
               break;
             default:

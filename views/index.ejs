@@ -18,64 +18,103 @@
   <main>
     <div class="ghost">
       <h1>Follow the white rabbit!</h1>
-    </div>    
+    </div>
     <div class="terminal" id="terminal-app">
-      <div class="terminal-header">
-        <div class="terminal-buttons">
-          <button class="terminal-button terminal-button--red"  v-on:click="close"></button>
-          <button class="terminal-button terminal-button--yellow"  v-on:click="ghost"></button>
-          <button class="terminal-button terminal-button--green" v-on:click="expand"></button>
-        </div>
+      <div class="terminal-content">
+          <div class="terminal-header">
+              <div class="terminal-buttons">
+                <button class="terminal-button terminal-button--red"  v-on:click="close"></button>
+                <button class="terminal-button terminal-button--yellow"  v-on:click="ghost"></button>
+                <button class="terminal-button terminal-button--green" v-on:click="expand"></button>
+              </div>
+            </div>
+            <div class="terminal-body">
+              <div class="welcome" v-if="welcome">
+                <div class="welcome-info">
+                  <p>Initializing AramShell 2000 v0.1</p>
+                  <p>Copyright &copy; Gonzalo Andres Ramirez - gandres.ramirez@gmail.com</code></p>
+                </div>
+                <div class="welcome-title">
+                  <h1>Welcome</h1>
+                </div>
+              </div>
+              <div class="terminal-info" v-if="info">
+                <h4>Available Commands</h4>
+                <p>Who am I?: root</p>
+                <p>What I know?: skills</p>
+                <p>What I did?: projects</p>
+                <p>Clear console: clear</p>
+              </div>
+              <div class="bye">
+               <p>Good bye, this page will be destroyed in {{ counter }}</p>
+              </div>
+              <div class="terminal-text">
+                <div class="terminal-text--block">
+                  <p class="terminal-text--label">Type help for a list of available commands.</p>
+                  <div class="terminal-cursor--input">
+                    <input v-focus type="text" class="terminal-input--text" name="terminal-input" v-on:keyup="validateConsole">
+                  </div>
+                  <div class="terminal-data" v-if="show">
+                    <h3>Who am I?</h3>
+                    <div class="terminal-skills--block">
+                    <p>Name: Gonzalo Andres Ramirez</p>
+                    <p>Career: Systems Engineer</p>
+                    <p>Field: Fullstack Developer</p>
+                    <p>Experience: > 10 years working in projects with big companies like Google, Microsoft, T-Mobile, Choice Hotels, Etc.</p>
+                    <p>Interests: Javascript, Python, CSS animations, videogames development, IA, AR.</p>
+                  </div>
+                  </div>
+                  <div class="terminal-data-skills" v-if="showskills">
+                    <h3>Skills</h3>
+                    <div class="terminal-skills--block">
+                      <h4>Front End</h4>
+                      <p>Html, Css, Sass, Less, GraphQL</p>
+                      <p>Angular 1, 2, React, Vue, Web Components (Polymer, Lit-element)</p>
+                      <p>Webpack, Babel, Gulp</p>
+                    </div>
+                    <div class="terminal-skills--block">
+                      <h4>Backend</h4>
+                      <p>Dot Net, Python, PHP, NodeJS</p>
+                    </div>
+                    <div class="terminal-skills--block">
+                      <h4>Databases</h4>
+                      <p>MySql, SQL Server, MongoDB, Postgres, Firebase</p>
+                    </div>
+                    <div class="terminal-skills--block">
+                        <h4>Devops</h4>
+                        <p>AppEngine</p>
+                      </div>
+                    <div class="terminal-skills--block">
+                        <a class="link" target="_blank" rel="noopener" href="https://www.github.com/gara501">My Github</a>
+                      </div>
+                  </div>
+                  <div class="terminal-data-projects" v-if="showprojects">
+                    <h3>A few projects that I have been working</h3>
+                    <div class="terminal-skills--block">
+                      <ul class="terminal--list">
+                        <li><a href="https://cloud.google.com/chrome-enterprise/" target="_blank" rel="noopener">Google Enterprise</a>
+                          <span>Redesign</span>
+                        </li>
+                        <li><a href="https://www.microsoft.com" target="_blank" rel="noopener">Microsoft</a>: Marketing pages.</li>
+                        <li><a href="https://www.honda.com/" target="_blank" rel="noopener">Honda</a> and <a href="https://www.acura.com/" target="_blank" rel="noopener">Acura</a>: Build and price section</li>
+                        <li><a href="https://www.choicehotels.com/" target="_blank" rel="noopener">Choice Hotels</a>: Site completely redesign </li>
+                        <li><a href="https://www.t-mobile.com/" target="_blank" rel="noopener">T-Mobile</a>: Site redesign</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="terminal-error" v-if="error">
+                <p>Error, invalid command!</p>
+              </div>
+            </div>
       </div>
-      <div class="terminal-body">
-        <div class="bye">
-         <p>Good bye, this page will be destroyed in {{ counter }}</p>
-        </div>
-        <div class="terminal-text">
-          <div class="terminal-text--block">
-            <p>Type help to see commands</p>
-            <div class="terminal-cursor--input">
-              <input type="text" class="terminal-input--text" name="terminal-input" placeholder="_" v-on:keyup="validateConsole">
-            </div>
-            <div class="terminal-data" v-bind:class="[show]">
-              <p>Name: Gonzalo Andres Ramirez</p>
-              <p>Career: Systems Engineer</p>
-              <p>Field: Fullstack Developer</p>
-              <p>Experience: > 10 years working in projects with big companies</p>
-            </div>
-            <div class="terminal-data-skills" v-bind:class="[showskills]">
-              <h3>Skills</h3>
-              <div class="terminal-skills--block">
-                <h4>Front End</h4>
-                <p>Html, Css, Sass, Less, GraphQL</p>
-                <p>Angular 1, 2, React, Vue, Web Components (Polymer, Lit-element)</p>
-                <p>Webpack, Babel, Gulp</p>
-              </div>
-              <div class="terminal-skills--block">
-                <h4>Backend</h4>
-                <p>Dot Net, Python, PHP, NodeJS</p>
-              </div>
-              <div class="terminal-skills--block">
-                <h4>Databases</h4>
-                <p>MySql, SQL Server, MongoDB, Postgres, Firebase</p>
-              </div>
-            </div>
-            <div class="terminal-info" v-if="info">
-              <p>Who am I?: whois</p>
-              <p>What I know?: skills</p>
-              <p>What I did?: projects</p>
-              <p>Clear console: clear</p>
-            </div>
-          </div>
-        </div>
-        <div class="terminal-error" v-if="error">
-          <p>Error, invalid command!</p>
-        </div>
-      </div>
+      
     </div>
   </main>
   <footer></footer>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
