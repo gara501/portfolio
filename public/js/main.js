@@ -14,16 +14,45 @@ const app = new Vue({
     showprojects: false,
     characters:'',
     devdata:{
-      name: '',
-      name_in: 'Name: Gonzalo Andres Ramirez',
-      career:'',
-      career_in: 'Career: Systems Engineer',
-      field:'',
-      field_in: 'Field: Fullstack Developer',
-      experience:'',
-      experience_in: 'Experience: > 10 years working in projects with big companies like Google, Microsoft, T-Mobile, Choice Hotels, Etc.',
-      interest: '',
-      interest_in: 'Interests: Javascript, Python, CSS animations, videogames development, IA, AR.'
+      personal: '',
+      personal_in: `<p>Name: Gonzalo Andres Ramirez</p><p>Career: Systems Engineer</p>
+                    <p>Field: Fullstack Developer</p>
+                    <p>Experience: > 10 years working in projects with big companies like Google, Microsoft, T-Mobile, Choice Hotels, Etc.</p>
+                    <p>Interests: Javascript, Python, CSS animations, videogames development, IA, AR.</p>`,
+      skills: '',
+      skills_in: `<div class="terminal-skills--block">
+                    <h4>Front End</h4>
+                    <p>Html, Css, Sass, Less, GraphQL</p>
+                    <p>Angular 1, 2, React, Vue, Web Components (Polymer, Lit-element)</p>
+                    <p>Webpack, Babel, Gulp</p>
+                  </div>
+                  <div class="terminal-skills--block">
+                    <h4>Backend</h4>
+                    <p>Dot Net, Python, PHP, NodeJS</p>
+                  </div>
+                  <div class="terminal-skills--block">
+                    <h4>Databases</h4>
+                    <p>MySql, SQL Server, MongoDB, Postgres, Firebase</p>
+                  </div>
+                  <div class="terminal-skills--block">
+                    <h4>Devops</h4>
+                    <p>AppEngine</p>
+                  </div>
+                  <div class="terminal-skills--block">
+                    <a class="link" target="_blank" rel="noopener" href="https://www.github.com/gara501">My Github</a>
+                  </div>`,
+      projects: '',            
+      projects_in: `<div class="terminal-skills--block">
+                    <ul class="terminal--list">
+                      <li><a href="https://cloud.google.com/chrome-enterprise/" target="_blank" rel="noopener">Google Enterprise</a>
+                        <span>Redesign</span>
+                      </li>
+                      <li><a href="https://www.microsoft.com" target="_blank" rel="noopener">Microsoft</a>: Marketing pages.</li>
+                      <li><a href="https://www.honda.com/" target="_blank" rel="noopener">Honda</a> and <a href="https://www.acura.com/" target="_blank" rel="noopener">Acura</a>: Build and price section</li>
+                      <li><a href="https://www.choicehotels.com/" target="_blank" rel="noopener">Choice Hotels</a>: Site completely redesign </li>
+                      <li><a href="https://www.t-mobile.com/" target="_blank" rel="noopener">T-Mobile</a>: Site redesign</li>
+                    </ul>
+                  </div>`
     },
     error: false,
     counter: 5,
@@ -47,7 +76,7 @@ const app = new Vue({
         if (counter === stringWord.length) {
           clearInterval(interval);
         }
-      }, 50)
+      }, 10)
     },
     expand: function(e) {
       const terminal = document.querySelector('.terminal');
@@ -86,17 +115,15 @@ const app = new Vue({
               break;
             case 'root':
               this.show = true;
-              this.chars(this.devdata.name_in, 'name');
-              this.chars(this.devdata.career_in, 'career');
-              this.chars(this.devdata.field_in, 'field');
-              this.chars(this.devdata.experience_in, 'experience');
-              this.chars(this.devdata.interest_in, 'interest');
+              this.chars(this.devdata.personal_in, 'personal');
               break;
             case 'projects':
               this.showprojects = true;
+              this.chars(this.devdata.projects_in, 'projects');
               break;
             case 'skills':
               this.showskills = true;
+              this.chars(this.devdata.skills_in, 'skills');
               break;
             case 'clear':
               this.info = false;

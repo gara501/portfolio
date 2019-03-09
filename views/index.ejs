@@ -57,50 +57,16 @@
                   <div class="terminal-data" v-if="show">
                     <h3>Who am I?</h3>
                     <div class="terminal-skills--block">
-                    <p>{{ devdata.name }}</p>
-                    <p>{{ devdata.career }}</p>
-                    <p>{{ devdata.field }}</p>
-                    <p>{{ devdata.experience }}</p>
-                    <p>{{ devdata.interest }}</p>
+                    <div v-html="devdata.personal"></div>
                   </div>
                   </div>
                   <div class="terminal-data-skills" v-if="showskills">
                     <h3>Skills</h3>
-                    <div class="terminal-skills--block">
-                      <h4>Front End</h4>
-                      <p>Html, Css, Sass, Less, GraphQL</p>
-                      <p>Angular 1, 2, React, Vue, Web Components (Polymer, Lit-element)</p>
-                      <p>Webpack, Babel, Gulp</p>
-                    </div>
-                    <div class="terminal-skills--block">
-                      <h4>Backend</h4>
-                      <p>Dot Net, Python, PHP, NodeJS</p>
-                    </div>
-                    <div class="terminal-skills--block">
-                      <h4>Databases</h4>
-                      <p>MySql, SQL Server, MongoDB, Postgres, Firebase</p>
-                    </div>
-                    <div class="terminal-skills--block">
-                        <h4>Devops</h4>
-                        <p>AppEngine</p>
-                      </div>
-                    <div class="terminal-skills--block">
-                        <a class="link" target="_blank" rel="noopener" href="https://www.github.com/gara501">My Github</a>
-                      </div>
+                    <div v-html="devdata.skills"></div>
                   </div>
                   <div class="terminal-data-projects" v-if="showprojects">
                     <h3>A few projects that I have been working</h3>
-                    <div class="terminal-skills--block">
-                      <ul class="terminal--list">
-                        <li><a href="https://cloud.google.com/chrome-enterprise/" target="_blank" rel="noopener">Google Enterprise</a>
-                          <span>Redesign</span>
-                        </li>
-                        <li><a href="https://www.microsoft.com" target="_blank" rel="noopener">Microsoft</a>: Marketing pages.</li>
-                        <li><a href="https://www.honda.com/" target="_blank" rel="noopener">Honda</a> and <a href="https://www.acura.com/" target="_blank" rel="noopener">Acura</a>: Build and price section</li>
-                        <li><a href="https://www.choicehotels.com/" target="_blank" rel="noopener">Choice Hotels</a>: Site completely redesign </li>
-                        <li><a href="https://www.t-mobile.com/" target="_blank" rel="noopener">T-Mobile</a>: Site redesign</li>
-                      </ul>
-                    </div>
+                    <div v-html="devdata.projects"></div>
                   </div>
                 </div>
               </div>
