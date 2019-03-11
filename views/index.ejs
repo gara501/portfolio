@@ -52,7 +52,7 @@
                 <div class="terminal-text--block">
                   <p class="terminal-text--label">Type help for a list of available commands.</p>
                   <div class="terminal-cursor--input">
-                    <input v-focus type="text" class="terminal-input--text" name="terminal-input" v-on:keyup="validateConsole">
+                    <input v-focus type="text" :disabled="disabled" class="terminal-input--text" name="terminal-input" v-on:keyup="validateConsole">
                   </div>
                   <div class="terminal-data" v-if="show">
                     <h3>Who am I?</h3>

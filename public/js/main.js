@@ -1,6 +1,9 @@
 Vue.directive('focus', {
   inserted: function (el) {
       el.focus()
+  },
+  componentUpdated: function (el) {
+    el.focus()
   }
 })
 
@@ -9,6 +12,7 @@ const app = new Vue({
   data: {
     info: false,
     show: false,
+    disabled: false,
     welcome: true,
     showskills: false,
     showprojects: false,
@@ -75,8 +79,9 @@ const app = new Vue({
         counter ++;
         if (counter === stringWord.length) {
           clearInterval(interval);
+          that.disabled = false;
         }
-      }, 10)
+      }, 5);
     },
     expand: function(e) {
       const terminal = document.querySelector('.terminal');
@@ -115,14 +120,20 @@ const app = new Vue({
               break;
             case 'root':
               this.show = true;
+              this.devdata.personal = '';
+              this.disabled = true;
               this.chars(this.devdata.personal_in, 'personal');
               break;
             case 'projects':
               this.showprojects = true;
+              this.devdata.projects = '';
+              this.disabled = true;
               this.chars(this.devdata.projects_in, 'projects');
               break;
             case 'skills':
               this.showskills = true;
+              this.devdata.skills = '';
+              this.disabled = true;
               this.chars(this.devdata.skills_in, 'skills');
               break;
             case 'clear':
