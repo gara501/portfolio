@@ -16,6 +16,7 @@ const app = new Vue({
     welcome: true,
     showskills: false,
     showprojects: false,
+    showaside: false,
     characters:'',
     devdata:{
       personal: '',
@@ -56,16 +57,28 @@ const app = new Vue({
                       <li><a href="https://www.choicehotels.com/" target="_blank" rel="noopener">Choice Hotels</a>: Site completely redesign </li>
                       <li><a href="https://www.t-mobile.com/" target="_blank" rel="noopener">T-Mobile</a>: Site redesign</li>
                     </ul>
-                  </div>`
+                  </div>`,
+      aside: '',            
+      aside_in: `<div class="terminal-skills--block">
+                    <p>Personal Trainer (NCSF) focused on hypertrophy training</p>
+                    <p>Self Defense, Krav Maga, Martial Arts lover.</p>
+                  </div>`,
+      welcome: `
+      @@@  @@@  @@@ @@@@@@@@ @@@       @@@@@@@  @@@@@@  @@@@@@@@@@  @@@@@@@@ @@@
+      @@!  @@!  @@! @@!      @@!      !@@      @@!  @@@ @@! @@! @@! @@!      @@@
+      @!!  !!@  @!@ @!!!:!   @!!      !@!      @!@  !@! @!! !!@ @!@ @!!!:!   !@!
+       !:  !!:  !!  !!:      !!:      :!!      !!:  !!! !!:     !!: !!:         
+        ::.:  :::   : :: ::: : ::.: :  :: :: :  : :. :   :      :   : :: ::: :.:                                                                       
+        `
     },
     error: false,
     counter: 5,
     commands: [
       'help',
-      'whois',
+      'root',
       'projects',
       'skills',
-      'encrypt',
+      'aside',
       'clear'
     ]
   },
@@ -136,6 +149,12 @@ const app = new Vue({
               this.devdata.skills = '';
               this.disabled = true;
               this.chars(this.devdata.skills_in, 'skills');
+              break;
+            case 'aside':
+              this.showaside = true;
+              this.devdata.aside = '';
+              this.disabled = true;
+              this.chars(this.devdata.aside_in, 'aside');
               break;
             case 'clear':
               this.info = false;

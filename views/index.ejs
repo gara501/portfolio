@@ -35,7 +35,13 @@
                   <p>Copyright &copy; Gonzalo Andres Ramirez - gandres.ramirez@gmail.com</code></p>
                 </div>
                 <div class="welcome-title">
-                  <h1>Welcome</h1>
+                  <pre>
+     ____ ____ ____ ____ ____ ____ ____ 
+    ||W |||E |||L |||C |||O |||M |||E ||
+    ||__|||__|||__|||__|||__|||__|||__||
+    |/__\|/__\|/__\|/__\|/__\|/__\|/__\|
+                      
+               </pre>
                 </div>
               </div>
               <div class="terminal-info" v-if="info">
@@ -68,6 +74,10 @@
                     <h3>A few projects that I have been working</h3>
                     <div v-html="devdata.projects"></div>
                   </div>
+                  <div class="terminal-data-aside" v-if="showaside">
+                      <h3>Aside projects and knowledge</h3>
+                      <div v-html="devdata.aside"></div>
+                    </div>
                 </div>
               </div>
               <div class="terminal-error" v-if="error">

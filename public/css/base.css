@@ -247,6 +247,10 @@ p {
   padding: 10px;
 }
 
+.terminal-data-aside {
+  color: rgb(132, 200, 247);
+}
+
 .welcome {
   align-items: center;
   display: flex;
