@@ -111,6 +111,7 @@ const app = new Vue({
     },
     validateConsole: function(e) {
       const code = e.target.value;
+      var clean = DOMPurify.sanitize(code);
       if (code.length > 0) {
         this.error = false;
         if (e.keyCode === 13) {
