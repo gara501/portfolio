@@ -79,7 +79,7 @@ const app = new Vue({
   methods: {
     matrixf: function() {
       const letters = this.commands.split('');
-      const animationLength = 20;
+      const animationLength = 5;
       let times = 0;
       let matrixPos = 0;
       let word = '';
@@ -112,7 +112,7 @@ const app = new Vue({
             clearInterval(interval);
           }
         }
-      }, 10)
+      }, 70)
     },
     
     chars: function(stringValue, param) {
