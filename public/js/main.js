@@ -156,11 +156,11 @@ const app = new Vue({
     },
     validateConsole: function(e) {
       const code = e.target.value;
-      var clean = DOMPurify.sanitize(code);
-      if (code.length > 0) {
+      let clean = DOMPurify.sanitize(code);
+      if (clean.length > 0) {
         this.error = false;
         if (e.keyCode === 13) {
-          switch (code) {
+          switch (clean.toLowerCase()) {
             case 'help':
               this.info = true; 
               break;
