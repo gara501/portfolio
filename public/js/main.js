@@ -5,7 +5,7 @@ Vue.directive('focus', {
   componentUpdated: function (el) {
     el.focus()
   }
-})
+});
 
 const app = new Vue({
   el: '#terminal-app',
@@ -69,20 +69,52 @@ const app = new Vue({
       @!!  !!@  @!@ @!!!:!   @!!      !@!      @!@  !@! @!! !!@ @!@ @!!!:!   !@!
        !:  !!:  !!  !!:      !!:      :!!      !!:  !!! !!:     !!: !!:         
         ::.:  :::   : :: ::: : ::.: :  :: :: :  : :. :   :      :   : :: ::: :.:                                                                       
-        `
+        `,
+      matrix: ''
     },
     error: false,
     counter: 5,
-    commands: [
-      'help',
-      'root',
-      'projects',
-      'skills',
-      'aside',
-      'clear'
-    ]
+    commands: '@,ﾊ,ｴ,1,2,0,ç,ｸ,ﾁ,Z,8'
   },
   methods: {
+    matrixf: function() {
+      const letters = this.commands.split('');
+      const animationLength = 20;
+      let times = 0;
+      let matrixPos = 0;
+      let word = '';
+      const matrixword = 'The Matrix has you';
+      var that = this;
+
+      const interval = setInterval(function(){
+        if (times < animationLength) {
+          const pos = Math.floor(Math.random()*letters.length)
+          const wordLetters = word.split('')
+          wordLetters[matrixPos] = letters[pos];
+          word = wordLetters.join('')
+          times++;
+          
+          if (word) {
+            that.devdata.matrix = word;
+          }
+
+        } else {
+          times = 0;
+          const wordLetters = word.split('')
+          wordLetters[matrixPos] = matrixword[matrixPos];
+          word = wordLetters.join('')
+          matrixPos++;
+          
+          if (word) {
+            that.devdata.matrix = word;
+          }
+          if (word === matrixword) {
+            clearInterval(interval);
+          }
+        }
+      }, 10)
+    },
+    
     chars: function(stringValue, param) {
       let stringWord = stringValue;
       let that = this;
@@ -156,12 +188,17 @@ const app = new Vue({
               this.disabled = true;
               this.chars(this.devdata.aside_in, 'aside');
               break;
+            case 'matrix':
+              this.matrixf();
+              break;
             case 'clear':
               this.info = false;
               this.error = false;
               this.showprojects = '';
               this.showskills = '';
+              this.showaside = '';
               this.welcome = false;
+              this.devdata.matrix = '';
               this.show = '';
               break;
             default:

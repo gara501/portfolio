@@ -49,6 +49,7 @@
                 <p>Who am I?: root</p>
                 <p>What I know?: skills</p>
                 <p>What I did?: projects</p>
+                <p>Just for fun: matrix</p>
                 <p>Clear console: clear</p>
               </div>
               <div class="bye">
@@ -77,7 +78,8 @@
                   <div class="terminal-data-aside" v-if="showaside">
                       <h3>Aside projects and knowledge</h3>
                       <div v-html="devdata.aside"></div>
-                    </div>
+                  </div>
+                  <div class="matrix" v-html="devdata.matrix"></div>
                 </div>
               </div>
               <div class="terminal-error" v-if="error">

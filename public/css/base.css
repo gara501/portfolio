@@ -234,6 +234,11 @@ p {
   color: inherit;
 }
 
+.terminal-error {
+  margin: 20px 0;
+  color: red;
+}
+
 .show {
   opacity: 1;
 }
@@ -281,6 +286,17 @@ p {
     1px 22px 10px rgba(16,16,16,0.2),
     1px 25px 35px rgba(16,16,16,0.2),
     1px 30px 60px rgba(16,16,16,0.4);
+}
+
+.matrix {
+  align-items: center;
+  display: flex;
+  flex-flow: row;
+  font-size: 2rem;
+  height: 60px;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
 }
 
 @media only screen and (min-width: 600px) { 
